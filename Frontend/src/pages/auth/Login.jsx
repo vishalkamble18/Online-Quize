@@ -9,14 +9,14 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+const API = import.meta.env.VITE_API_URL;
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post("/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(`${API}/auth/login`, {
+  email,
+  password,
+});
 
       const { token, user } = res.data;
 
