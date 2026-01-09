@@ -6,16 +6,7 @@ const connectDB = require("./config/db");
 connectDB();
 
 const app = express();
-app.use(
-  cors({
-    origin: [
-      "https://online-quize-mu.vercel.app",
-      "https://online-quize-git-main-vishals-projects-a27808f4.vercel.app", // your Vercel frontend
-      "http://localhost:5173"             // local dev
-    ],
-    credentials: true
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/authRoutes"));
