@@ -9,7 +9,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://quiz-frontend.vercel.app", // your Vercel frontend
+      "https://online-quize-mu.vercel.app/", // your Vercel frontend
       "http://localhost:5173"             // local dev
     ],
     credentials: true
