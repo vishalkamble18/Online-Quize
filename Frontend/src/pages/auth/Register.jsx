@@ -1,7 +1,9 @@
 import { useState } from "react";
-import api from "../../services/api";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import axios from "axios";
+
+const API = import.meta.env.VITE_API_URL;
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -18,15 +20,18 @@ export default function Register() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await api.post("/auth/register", form);
-      alert("Account created successfully");
-      navigate("/login");
-    } catch (err) {
-      alert(err.response?.data?.message || "Register failed");
-    }
-  };
+  e.preventDefault();
+
+  try {
+    const res = await axios.post(`${API}/auth/register`, form);
+    console.log("REGISTER SUCCESS:", res.data);
+    alert("Account created successfully");
+    navigate("/login");
+  } catch (err) {
+    console.log("REGISTER ERROR:", err.response?.data || err.message);
+    alert("Register failed");
+  }
+};
 
   return (
     /* PAGE BACKGROUND IMAGE (WHITE SPACE AREA) */
