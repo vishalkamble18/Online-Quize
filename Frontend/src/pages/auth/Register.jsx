@@ -20,7 +20,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API}/auth/register`,form);
+      await api.post(`${API}/auth/register`,form);
       alert("Account created successfully");
       navigate("/login");
     } catch (err) {
